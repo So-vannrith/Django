@@ -22,7 +22,7 @@
                                 <span>Follow us</span>
                                 {% for SocialMedia in SocialMedias %}
                                     <ul class="d-flex">
-                                        <li><a href="#{{SocialMedia.id}}" class="{{SocialMedia.socialMediaName}}" style="margin-right: 10px;"><i class=" {{ SocialMedia.socialMediaURL }} "></i></a></li>
+                                        <li><a href="#" class="{{SocialMedia.socialMediaName}}" style="margin-right: 10px;"><i class=" {{ SocialMedia.socialMediaURL }} "></i></a></li>
                                     </ul>
                                 {% endfor %}
                                         
@@ -73,7 +73,7 @@
                                 <ul class="d-flex">
 
                                     {% for TopMenu in TopMenus %}
-                                        <li class="dropdown"><a href="http://127.0.0.1:8000/{{TopMenu.topMenuName}}">{{TopMenu.topMenuName}}</a>
+                                        <li class="dropdown"><a href="#">{{TopMenu.topMenuName}}</a>
                                             <ul class="sub_menu">
                                                 {% for SubTopMenu in SubTopMenus %}
                                                     {% if TopMenu.id == SubTopMenu.TopMenuID_id %}
