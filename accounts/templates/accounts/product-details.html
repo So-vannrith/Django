@@ -24,14 +24,11 @@
     <!--product details start-->
     <section class="product_details mb-135">
         <div class="container">
-            
-            
             <div class="row">
-                
                 <div class="col-lg-6 col-md-6">
                     <div class="product_zoom_gallery">
                        <div class="zoom_gallery_inner d-flex">
-                           <!-- <div class="zoom_tab_img">
+                           <div class="zoom_tab_img">
                                 <a class="zoom_tabimg_list" href="javascript:void(0)"><img src="{% static 'assets/img/product/small-product/product1.png' %}" alt="tab-thumb"></a>
                                 <a class="zoom_tabimg_list" href="javascript:void(0)"><img src="{% static 'assets/img/product/small-product/product2.png' %}" alt="tab-thumb"></a>
                                 <a class="zoom_tabimg_list" href="javascript:void(0)"><img src="{% static 'assets/img/product/small-product/product3.png' %}" alt="tab-thumb"></a>
@@ -40,14 +37,12 @@
                                 <a class="zoom_tabimg_list" href="javascript:void(0)"><img src="{% static 'assets/img/product/small-product/product2.png' %}" alt="tab-thumb"></a>
                                 <a class="zoom_tabimg_list" href="javascript:void(0)"><img src="{% static 'assets/img/product/small-product/product3.png' %}" alt="tab-thumb"></a>
                                 <a class="zoom_tabimg_list" href="javascript:void(0)"><img src="{% static 'assets/img/product/small-product/product4.png' %}" alt="tab-thumb"></a>
-                           </div> -->
+                           </div>
                            <div class="product_zoom_main_img">
-                            {% for Product in Products %}
                                 <div class="product_zoom_thumb">
-                                    <img data-image="{{Product.id}}" src="{% static Product.productImage %}" alt="">
+                                    <img data-image="{% static 'assets/img/product/big-product/product1.png' %}" src="{% static 'assets/img/product/big-product/product1.png' %}" alt="">
                                 </div>
-                                {% endfor %}
-                                <!-- <div class="product_zoom_thumb">
+                                <div class="product_zoom_thumb">
                                     <img data-image="{% static 'assets/img/product/big-product/product1.png' %}" src="{% static 'assets/img/product/big-product/product1.png' %}" alt="">
                                 </div>
                                 <div class="product_zoom_thumb">
@@ -67,7 +62,7 @@
                                 </div>
                                 <div class="product_zoom_thumb">
                                     <img data-image="{% static 'assets/img/product/big-product/product1.png' %}" src="{% static 'assets/img/product/big-product/product1.png' %}" alt="">
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,12 +81,12 @@
                                         <li><a href="#"><i class="ion-ios-star"></i></a></li>
                                     </ul>
                                 </div>
-                                <!-- <div class="product_review">
+                                <div class="product_review">
                                     <ul class="d-flex">
                                         <li>4 reviews</li>
                                         <li>Write your review</li>
                                     </ul>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="price_box">
                                 <span class="current_price">$39.00</span>
@@ -106,7 +101,7 @@
                                 <p>A t-shirt that comes in three colors (red, white and blue) and three sizes (small, medium, large) is a configurable product.  </p>
                             </div>
                             <div class="product_variant">
-                                <!-- <div class="filter__list widget_color d-flex align-items-center">
+                                <div class="filter__list widget_color d-flex align-items-center">
                                     <h3>select color</h3>
                                     <ul>
                                        <li>
@@ -126,8 +121,8 @@
                                             <span class="checkmark color5"></span>
                                         </li>
                                     </ul>
-                                </div> -->
-                                <!-- <div class="filter__list widget_size d-flex align-items-center">
+                                </div>
+                                <div class="filter__list widget_size d-flex align-items-center">
                                     <h3>select size</h3>
                                     <ul>
                                         <li>
@@ -146,31 +141,47 @@
                                             <a href="javascript:void(0)">XLL</a>
                                         </li>
                                     </ul>
-                                </div> -->
+                                </div>
 
                                 <div class="variant_quantity_btn d-flex">
                                     <div class="pro-qty border">
                                         <input min="1" max="100" type="tex" value="1">
                                     </div>
                                     <button class="button btn btn-primary" type="submit"><i class="ion-android-add"></i> Add To Cart</button>
-                                    <!-- <a class="wishlist" href="#"><i class="ion-ios-heart"></i></a> -->
+                                    <a class="wishlist" href="#"><i class="ion-ios-heart"></i></a>
                                 </div>
                             </div>
-                            
-                            
-                            
+                            <div class="product_sku">
+                                <p><span>SKU: </span> #ABC123456</p>
+                            </div>
+                            <div class="product_tags d-flex">
+                                <span>tags: </span>
+                                <ul class="d-flex">
+                                    <li><a href="#">fashion,</a></li>
+                                    <li><a href="#">clothings,</a></li>
+                                    <li><a href="#">accessorires</a></li>
+                                </ul>
+                            </div>
+                            <div class="priduct_social d-flex">
+                                <span>SHARE: </span>
+                                <ul>
+                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                                </ul>
+                            </div>
                         </form>
                     </div>
                 </div>
-                
             </div>
-           
         </div>
     </section>
     <!--product details end-->
 
     <!--product info start-->
-    <!-- <div class="product_d_info mb-118">
+    <div class="product_d_info mb-118">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -345,7 +356,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!--product info end-->
 
     <!--product area start-->
@@ -373,20 +384,19 @@
                       {"breakpoint":300, "settings": { "slidesToShow": 1 } }
                      ]
                 }'>
-                {% for Product in Products %}
                     <div class="col-lg-3">
                         <article class="single_product">
                             <figure>
                                 <div class="product_thumb">
                                     <a href="{% url 'product_details' %}" >
-                                        <img class="primary_img" src="{% static Product.productImage %}" alt="consectetur">
+                                        <img class="primary_img" src="{% static 'assets/img/product/product1.jpg' %}" alt="consectetur">
                                     </a>
                                     <div class="product_action">
                                         <ul>
                                             <li class="wishlist"><a href="#" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
                                             data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-heart icons"></i></a></li>
 
-                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box-{{ Product.id }}" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
+                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
                                             <li class="compare"><a data-tippy="Compare" href="#" data-tippy-inertia="true" data-tippy-delay="50"
                                             data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-refresh icons"></i></a></li>
                                         </ul>
@@ -395,27 +405,239 @@
                                 <figcaption class="product_content text-center">
                                     <div class="product_ratting">
                                         <ul class="d-flex justify-content-center">
-                                            <li><a href="#"><i class="{{Product.product_ratting}}"></i></a></li>
-                                            <li><a href="#"><i class="{{Product.product_ratting}}"></i></a></li>
-                                            <li><a href="#"><i class="{{Product.product_ratting}}"></i></a></li>
-                                            <li><a href="#"><i class="{{Product.product_ratting}}"></i></a></li>
-                                            <li><a href="#"><i class="{{Product.product_ratting}}"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
                                             <li><span>(4)</span></li>
                                         </ul>
                                     </div>
-                                    <h4 class="product_name"><a href="{% url 'product_details' %}">{{Product.productName}}</a></h4>
+                                    <h4 class="product_name"><a href="{% url 'product_details' %}">Basic Joggin Shorts</a></h4>
                                     <div class="price_box">
-                                        <span class="current_price">${{Product.current_price}}</span>
-                                        <span class="old_price">${{Product.old_price}}</span>
+                                        <span class="current_price">$26.00</span>
+                                        <span class="old_price">$62.00</span>
                                     </div>
                                     <div class="add_to_cart">
-                                        <a class="btn btn-primary" href="{% url 'cart' %}" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                        <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
                                     </div>
                                 </figcaption>
                             </figure>
                         </article>
                     </div>
-                    {% endfor %}
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a href="{% url 'product_details' %}" >
+                                        <img class="primary_img" src="{% static 'assets/img/product/product2.jpg' %}" alt="consectetur">
+                                    </a>
+                                    <div class="product_action">
+                                        <ul>
+                                            <li class="wishlist"><a href="#" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-heart icons"></i></a></li>
+
+                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
+                                            <li class="compare"><a data-tippy="Compare" href="#" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-refresh icons"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product_label">
+                                        <span>-20%</span>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content text-center">
+                                    <div class="product_ratting">
+                                        <ul class="d-flex justify-content-center">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><span>(6)</span></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="product_name"><a href="{% url 'product_details' %}">Make Thing Happen T-Shirts</a></h4>
+                                    <div class="price_box">
+                                        <span class="text-black">$38.00</span>
+
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a href="{% url 'product_details' %}" >
+                                        <img class="primary_img" src="{% static 'assets/img/product/product3.jpg' %}" alt="consectetur">
+                                    </a>
+                                    <div class="product_action">
+                                        <ul>
+                                            <li class="wishlist"><a href="#" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-heart icons"></i></a></li>
+
+                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
+                                            <li class="compare"><a data-tippy="Compare" href="#" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-refresh icons"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product_label">
+                                        <span>-18%</span>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content text-center">
+                                    <div class="product_ratting">
+                                        <ul class="d-flex justify-content-center">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><span>(2)</span></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="product_name"><a href="{% url 'product_details' %}">Basic White Simple Sneaker</a></h4>
+                                    <div class="price_box">
+                                        <span class="current_price">$43.00</span>
+                                        <span class="old_price">$46.00</span>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a href="{% url 'product_details' %}" >
+                                        <img class="primary_img" src="{% static 'assets/img/product/product4.jpg' %}" alt="consectetur">
+                                    </a>
+                                    <div class="product_action">
+                                        <ul>
+                                            <li class="wishlist"><a href="#" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-heart icons"></i></a></li>
+
+                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
+                                            <li class="compare"><a data-tippy="Compare" href="#" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-refresh icons"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content text-center">
+                                    <div class="product_ratting">
+                                        <ul class="d-flex justify-content-center">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><span>(8)</span></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="product_name"><a href="{% url 'product_details' %}">Simple Rounded Sunglasses</a></h4>
+                                    <div class="price_box">
+                                       <span class="text-black">$42.00</span>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a href="{% url 'product_details' %}" >
+                                        <img class="primary_img" src="{% static 'assets/img/product/product1.jpg' %}" alt="consectetur">
+                                    </a>
+                                    <div class="product_action">
+                                        <ul>
+                                            <li class="wishlist"><a href="#" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-heart icons"></i></a></li>
+
+                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
+                                            <li class="compare"><a data-tippy="Compare" href="#" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-refresh icons"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content text-center">
+                                    <div class="product_ratting">
+                                        <ul class="d-flex justify-content-center">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><span>(12)</span></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="product_name"><a href="{% url 'product_details' %}">Basic Joggin Shorts</a></h4>
+                                    <div class="price_box">
+                                        <span class="current_price">$26.00</span>
+                                        <span class="old_price">$362.00</span>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="col-lg-3">
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a href="{% url 'product_details' %}" >
+                                        <img class="primary_img" src="{% static 'ssets/img/product/product2.jpg' %}a" alt="consectetur">
+                                    </a>
+                                    <div class="product_action">
+                                        <ul>
+                                            <li class="wishlist"><a href="#" data-tippy="Wishlist" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-heart icons"></i></a></li>
+
+                                            <li class="quick_view"><a data-toggle="modal" data-target="#modal_box" data-tippy="Quick View" href="#" data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-size-fullscreen icons"></i></a></li>
+                                            <li class="compare"><a data-tippy="Compare" href="#" data-tippy-inertia="true" data-tippy-delay="50"
+                                            data-tippy-arrow="true" data-tippy-placement="left"><i class="icon-refresh icons"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product_label">
+                                        <span>-20%</span>
+                                    </div>
+                                </div>
+                                <figcaption class="product_content text-center">
+                                    <div class="product_ratting">
+                                        <ul class="d-flex justify-content-center">
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-android-star"></i></a></li>
+                                            <li><span>(14)</span></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="product_name"><a href="{% url 'product_details' %}">Simple Rounded Sunglasses</a></h4>
+                                    <div class="price_box">
+                                        <span class="current_price">$35.00</span>
+                                        <span class="old_price">$38.00</span>
+                                    </div>
+                                    <div class="add_to_cart">
+                                        <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
@@ -426,7 +648,7 @@
      {% for Product in Products %}
      {{Product.id}}
 
-    <div class="modal fade" id="modal_box-{{ Product.id }}" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -479,7 +701,7 @@
                                         <div class="modal_add_to_cart">
                                             <form action="#">
                                                 <input min="1" max="100" step="2" value="1" type="number">
-                                                <button type="submit"><a href="{% url 'cart' %}">add to cart</a></button>
+                                                <button type="submit">add to cart</button>
                                             </form>
                                         </div>
                                     </div>

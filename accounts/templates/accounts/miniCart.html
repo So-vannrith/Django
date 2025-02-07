@@ -12,7 +12,9 @@
         {% for item in cart_items %}
         <div class="cart_item">
             <div class="cart_img">
-                <a href="#"><img src="{{ item.product.productImage.url }}" alt="{{ item.product.productName }}"></a>
+                <a href="#">
+                    <img src="{{ item.product.productImage.url }}" alt="{{ item.product.productName }}">
+                </a>
             </div>
             <div class="cart_info">
                 <a href="#">{{ item.product.productName }}</a>
@@ -24,22 +26,21 @@
         </div>
         {% endfor %}
     </div>
-    
     <div class="mini_cart_table">
         <div class="cart_table_border">
             <div class="cart_total">
                 <span>Sub total:</span>
-                <span class="price">${{ cart_total }}</span>
+                <span class="price">${{ subtotal }}</span>
             </div>
             <div class="cart_total mt-10">
                 <span>total:</span>
-                <span class="price">${{ cart_total }}</span>
+                <span class="price">${{ grand_total }}</span>
             </div>
         </div>
     </div>
     <div class="mini_cart_footer">
         <div class="cart_button">
-            <a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> View cart</a>
+            <a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> View cart</a>
         </div>
         <div class="cart_button">
             <a href="{% url 'checkout' %}"><i class="fa fa-sign-in"></i> Checkout</a>

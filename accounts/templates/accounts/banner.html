@@ -5,26 +5,21 @@
             <h2>featured collections</h2>
         </div>
         <div class="banner_container d-flex">
-            {% for Banner in Banners%}
             <figure class="single_banner position-relative mr-30">
-               
-                <img src="{% static Banner.img1 %}" alt="" style="width: 700px; height: 450px;">
+                <img src="{% static 'assets/img/bg/bg1.jpg' %}" alt="">
                 <figcaption class="banner_text position-absolute">
-                    <h3>{{Banner.text1}}</h3>
-                    <p>{{Banner.span1}}</p>
-                    <a class="btn btn-primary" href="{% url 'Product' %}" >Shop Now</a>
+                    <h3>Zara Pattern <br> backpacks</h3>
+                    <p>Stretch, fresh-cool help you alway <br> comfortable</p>
+                    <a class="btn btn-primary" href="{% url 'shop' %}">Shop Now</a>
                 </figcaption>
-                
             </figure>
-           
             <figure class="single_banner position-relative">
-                <img src="{% static Banner.img2 %}" alt="" style="width: 500px; height: 450px;">
+                <img src="{% static 'assets/img/bg/bg2.jpg' %}" alt="">
                 <figcaption class="banner_text position-absolute">
-                    <h3 class="text-white" style="color: #000;">{{Banner.text2}}</h3>
-                    <p class="text-white">{{Banner.span2}}</p>
+                    <h3 class="text-white">Basic Color Caps</h3>
+                    <p class="text-white">Minimalist never cool, choose and make <br> the simple great again!</p>
                 </figcaption>
             </figure>
-            {% endfor %}
         </div>
     </div>
 </section>

@@ -5,7 +5,7 @@ from import_export import resources
 from import_export.admin import ExportActionMixin
 # Register your models here.
 
-admin.site.site_header = "Administrator"
+admin.site.site_header = "ACLEDA University of Business"
 admin.site.site_title = "ACLEDA University of Business Admin Panel"
 admin.site.index_title = "Admin Panel"
 
@@ -30,6 +30,7 @@ class ProductAdmin( ExportActionMixin,admin.ModelAdmin):
     def __init__(self, model, admin_site):
             super().__init__(model, admin_site)
             self.opts.verbose_name_plural="Manage Products"
+            
 # class ClientAdmin( ExportActionMixin,admin.ModelAdmin):
 #     list_display = ["image_preview","id","clientName","clientImage","clientDescription"]
 #     readonly_fields = ["image_preview"]
@@ -72,6 +73,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_filter = ["date_created"]
     search_fields = ["name"]
     date_hierarchy = "date_created"
+
 # admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(tblProducts, ProductAdmin)
@@ -82,12 +84,8 @@ admin.site.register(TblBlogType)
 admin.site.register(TblBlog)
 admin.site.register(tblProductDetail)
 admin.site.register(tblSlides)
-admin.site.register(tblFooter)
-admin.site.register(tblBanner)
 admin.site.register(Cart)
 admin.site.register(CartItem)
 admin.site.register(Order)
 admin.site.register(Payment)
-
-
 

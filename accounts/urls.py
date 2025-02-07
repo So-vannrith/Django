@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from .views import *
+# from .views import update_cart, add_to_cart, remove_from_cart, clear_cart, view_cart
 
 urlpatterns = [
 
@@ -9,16 +10,20 @@ urlpatterns = [
     path('blog_details/', views.blog_details, name='blog_details'),
     path('Blog', views.blog, name='blog'),
     path('CartPage/', views.CartPage, name='CartPage'),
+
+
     path('cart', views.cart_view, name='cart'),
     path('cart/', views.cart_view, name='view_cart'),
-    path('checkout', views.checkout, name='checkout'),
     path('checkout/', views.checkout, name='checkout'),
+    path('checkout', views.checkout, name='checkout'),
+
     path('product_details/', views.product_details, name='product_details'),
     path('shop/', views.shop, name='shop'),
     path('showCategory/', views.ListCategory, name= 'categorys'),
-    path('Page', views.pages, name='pages'),
+    # path('ViewBlog/<int:pk>', views.ViewBlog, name='ViewBlog'),
+    path('pages/', views.pages, name='pages'),
     path('Product', views.Product, name='Product'),
-
+ 
     path('mini-cart/', views.mini_cart, name='mini_cart'),
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('update-cart/', views.update_cart, name='update_cart'),
@@ -26,7 +31,7 @@ urlpatterns = [
     path('clear-cart/', views.clear_cart, name='clear_cart'),
     path('place-order/', views.place_order, name='place_order'),
 
-
+    #api    
     path('Pros/', ProductsListCreate.as_view(), name='ProList'),
     path('Pros/<int:pk>/', ProductsDetail.as_view(), name='ProDetail'),
     
@@ -40,5 +45,5 @@ urlpatterns = [
 
     path('TopMenu/', TopMenuListCreate.as_view(), name='TopMenuList'),
     path('TopMenu/<int:pk>/', TopMenuDetail.as_view(), name='TopMenuDetail'),
-    
+
 ]

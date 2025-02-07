@@ -13,42 +13,23 @@
                                         href="#">uthrstore@domain.com</a></li>
                             </ul>
                         </div>
-                        <div class="free_shipping_text">
+                        <!-- <div class="free_shipping_text">
                             <p class="text-white">Free shipping worldwide for orders over $99 <a href="#">Learn
                                     More</a></p>
-                        </div>
+                        </div> -->
                         <div class="header_top_sidebar d-flex align-items-center">
                             <div class="header_social d-flex">
                                 <span>Follow us</span>
                                 {% for SocialMedia in SocialMedias %}
                                     <ul class="d-flex">
-                                        <li><a href="#" class="{{SocialMedia.socialMediaName}}" style="margin-right: 10px;"><i class=" {{ SocialMedia.socialMediaURL }} "></i></a></li>
+                                        <li><a href="#{{SocialMedia.id}}" class="{{SocialMedia.socialMediaName}}" style="margin-right: 10px;"><i class=" {{ SocialMedia.socialMediaURL }} "></i></a></li>
                                     </ul>
                                 {% endfor %}
                                         
                                
 
                             </div>
-                            <div class="language_currency">
-                                <ul class="d-flex">
-                                    <li class="language"><a href="#"> Eng <i
-                                                class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_language">
-                                            <li><a href="#">French</a></li>
-                                            <li><a href="#">Spanish</a></li>
-                                            <li><a href="#">Russian</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="currency"><a href="#"> USd <i
-                                                class="icon-right ion-ios-arrow-down"></i></a>
-                                        <ul class="dropdown_currency">
-                                            <li><a href="#">€ Euro</a></li>
-                                            <li><a href="#">£ Pound Sterling</a></li>
-                                            <li><a href="#">$ US Dollar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -73,34 +54,18 @@
                                 <ul class="d-flex">
 
                                     {% for TopMenu in TopMenus %}
-                                        <li class="dropdown"><a href="#">{{TopMenu.topMenuName}}</a>
+                                        <li class="dropdown"><a href="http://127.0.0.1:8000/{{TopMenu.topMenuName}}">{{TopMenu.topMenuName}}</a>
                                             <ul class="sub_menu">
                                                 {% for SubTopMenu in SubTopMenus %}
-                                                    {% if TopMenu.id == SubTopMenu.TopMenuID_id %}
+                                                {% if TopMenu.id == SubTopMenu.TopMenuID_id %}
                                                         <li><a href="{{SubTopMenu.subTopMenuName}}">{{SubTopMenu.subTopMenuName}}</a></li>
-                                                    {% endif %}
+                                                        {% endif %}
                                                 {% endfor %}    
                                             </ul>
                                         </li>
                                     {% endfor %}
 
-                                    <!-- <li><a class="active" href="{% url 'index' %}">demo</a> </li>
-                                    <li><a href="{% url 'shop' %}">shop</a></li>
-                                    <li><a href="{% url 'product_details' %}">product</a></li>
-                                    <li><a href="#">sale</a></li>
-                                    <li><a href="#">pages</a>
-                                        <ul class="sub_menu">
-                                            <li><a href="{% url 'cart' %}">Cart Pages</a></li>
-                                            <li><a href="{% url 'checkout' %}">Checkout Pages</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="{% url 'blog' %}">blog</a>
-                                        <ul class="sub_menu">
-                                            <li><a href="{% url 'blog' %}">Blog Pages</a></li>
-                                            <li><a href="{% url 'blog_details' %}">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">buy</a></li> -->
+
                                 </ul>
                             </nav>
                         </div>
@@ -114,8 +79,8 @@
                                         <li><a href="#">Contact</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#"><i class="icon-heart icons"></i></a> <span
-                                        class="item_count">2</span></li>
+                                <!-- <li><a href="#"><i class="icon-heart icons"></i></a> <span
+                                        class="item_count">2</span></li> -->
                                 <li class="shopping_cart"><a href="#"><i class="icon-basket-loaded icons"></i></a>
                                     <span class="item_count">2</span></li>
                             </ul>

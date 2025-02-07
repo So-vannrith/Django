@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'import_export',
     'ckeditor',
-    'rest_framework'
+    'rest_framework',
 ]
 
 CKEDITOR_CONFIGS = {
