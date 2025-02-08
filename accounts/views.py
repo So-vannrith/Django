@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from .models import *
+# Create your views here.
 from django.contrib import messages
+from rest_framework import generics
 from rest_framework import generics
 from .serializers import *
 
@@ -13,6 +15,7 @@ class ProductsListCreate(generics.ListCreateAPIView):
     queryset = tblProducts.objects.all()    
     serializer_class = ProductSerializer
 
+# RetrieveUpdateDestroyAPIView provides GET (retrieve), PUT (update), DELETE (destroy) actions
 
 class ProductsDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = tblProducts.objects.all()
@@ -53,122 +56,86 @@ class TopMenuListCreate(generics.ListCreateAPIView):
 class TopMenuDetail(generics.RetrieveUpdateDestroyAPIView):    
     queryset = tblTopMenu.objects.all()
     serializer_class = TopMenuSerializer
-########## end API views ##########
+
 
 def index(request):
+    # Client = tblClients.objects.all
     SocialMedia = tblSocialMedia.objects.all 
     Product = tblProducts.objects.all
-    Categorie = Category.objects.all
+    Categories = Category.objects.all
     Slide = tblSlides.objects.all 
     TopMenu = tblTopMenu.objects.all
     SubTopMenu = tblSubTopMenu.objects.all
+    Footer = tblFooter.objects.all
+    Banner = tblBanner.objects.all
 
     cart = Cart.objects.get(user=request.user)
     cart_items = cart.items.all()
 
     subtotal = sum(float(item.product.current_price) * int(item.quantity) for item in cart_items)
     grand_total = subtotal
+
 
     context = {
         'SocialMedias':SocialMedia,
         'Products':Product,
-        'Categories':Categorie,
+        'Categories':Categories,
         'Slides':Slide,
         'TopMenus':TopMenu,
         'SubTopMenus':SubTopMenu,
+        'Footers':Footer,
+        'Banners':Banner,
         'cart_items': cart_items,
         'subtotal': subtotal,
         'grand_total': grand_total,
+
         
     }
     return render(request,'accounts/index.html',context)
-
-def shop(request):
-    TopMenu = tblTopMenu.objects.all
-    SubTopMenu = tblSubTopMenu.objects.all
-    
-    context = {        
-        'TopMenus':TopMenu,
-        'SubTopMenus':SubTopMenu,
-     }
-    return render(request,'accounts/shop.html',context)
      
 def Product(request):
+    #     Product = tblProducts.objects.get(BlogTypeID=pk)
     TopMenu = tblTopMenu.objects.all
     SubTopMenu = tblSubTopMenu.objects.all
+    SocialMedia = tblSocialMedia.objects.all 
     Product = tblProducts.objects.all
+    Footer = tblFooter.objects.all
     cart = Cart.objects.get(user=request.user)
     cart_items = cart.items.all()
 
     subtotal = sum(float(item.product.current_price) * int(item.quantity) for item in cart_items)
     grand_total = subtotal
+
+
     context = {
         'TopMenus':TopMenu,
+        'SocialMedias':SocialMedia,
         'SubTopMenus':SubTopMenu,
         'Products':Product,
+        'Footers':Footer,
         'cart_items': cart_items,
         'subtotal': subtotal,
         'grand_total': grand_total,
+
      }
     return render(request, "accounts/Product.html",context)
-
-def pages(request):
-    TopMenu = tblTopMenu.objects.all
-    SubTopMenu = tblSubTopMenu.objects.all
-    
-    context = {        
-        'TopMenus':TopMenu,
-        'SubTopMenus':SubTopMenu,
-     }
-    return render(request,'accounts/pages.html',context)
-     
-def blog(request):
-    TopMenu = tblTopMenu.objects.all
-    SubTopMenu = tblSubTopMenu.objects.all
-    
-    context = {        
-        'TopMenus':TopMenu,
-        'SubTopMenus':SubTopMenu,
-     }
-    return render(request,'accounts/blog.html',context)
-
-def product_details(request):
-    TopMenu = tblTopMenu.objects.all
-    SubTopMenu = tblSubTopMenu.objects.all
-    
-    context = {        
-        'TopMenus':TopMenu,
-        'SubTopMenus':SubTopMenu,
-     }
-    return render(request,'accounts/product-details.html',context)
-
-def CartPage(request):
-    TopMenu = tblTopMenu.objects.all
-    SubTopMenu = tblSubTopMenu.objects.all
-    
-    context = {        
-        'TopMenus':TopMenu,
-        'SubTopMenus':SubTopMenu,
-     }
-    return render(request,'accounts/CartPage.html',context)
-
 
 def mini_cart(request):
     cart = Cart.objects.get(user=request.user)
     cart_items = cart.items.all()
     cart_total = sum(item.total_price for item in cart_items)
-
     subtotal = sum(float(item.product.current_price) * int(item.quantity) for item in cart_items)
     grand_total = subtotal
-    context ={
+
+    return render(request, 'path/miniCart.html', {
         'cart_items': cart_items,
         'cart_total': cart_total,
         'subtotal': subtotal,
         'grand_total': grand_total,
-    }
-    return render(request, 'path/miniCart.html', context)
 
-# @login_required
+    })
+
+
 def cart_view(request):
     TopMenu = tblTopMenu.objects.all
     SubTopMenu = tblSubTopMenu.objects.all
@@ -177,7 +144,7 @@ def cart_view(request):
     
     # Ensure all values are numeric
     subtotal = sum(float(item.product.current_price) * int(item.quantity) for item in cart_items)
-    grand_total = subtotal
+    grand_total = subtotal  # Assuming no additional taxes or shipping for now
 
     context = {
         'cart_items': cart_items,
@@ -189,11 +156,13 @@ def cart_view(request):
     }
     return render(request, 'accounts/cart.html', context)
 
+
 def add_to_cart(request, product_id):
-    product = tblProducts.objects.get(id=product_id)
+    product = get_object_or_404(tblProducts, id=product_id)
     cart, created = Cart.objects.get_or_create(user=request.user)
-    
+
     # Create or update CartItem
+
     cart_item, created = CartItem.objects.get_or_create(
         cart=cart,
         product=product,
@@ -202,8 +171,9 @@ def add_to_cart(request, product_id):
     if not created:
         cart_item.quantity += 1
         cart_item.save()
-    
+        
     return redirect('view_cart')
+
 
 def update_cart(request):
     if request.method == 'POST':
@@ -215,11 +185,11 @@ def update_cart(request):
                 cart_item.save()
     return redirect('view_cart')
 
-
 def remove_from_cart(request, item_id):
     cart_item = get_object_or_404(CartItem, id=item_id)
     cart_item.delete()
     return redirect('view_cart')
+
 
 def clear_cart(request):
     if request.method == 'POST':
@@ -234,7 +204,69 @@ def cart_item_count(request):
         if cart:
             return {'cart_item_count': cart.items.count(0)}
     return {'cart_item_count': 0}
-# end cart
+
+
+def pages(request):
+    TopMenu = tblTopMenu.objects.all
+    SocialMedia = tblSocialMedia.objects.all 
+    SubTopMenu = tblSubTopMenu.objects.all
+    Footer = tblFooter.objects.all
+    context = {        
+        'TopMenus':TopMenu,
+        'SocialMedias':SocialMedia,
+        'SubTopMenus':SubTopMenu,
+        'Footers':Footer,
+
+     }
+    return render(request,'accounts/pages.html',context)
+     
+def blog(request):
+    Blog=TblBlog.objects.all
+    TopMenu = tblTopMenu.objects.all
+    SocialMedia = tblSocialMedia.objects.all 
+    SubTopMenu = tblSubTopMenu.objects.all
+    Footer = tblFooter.objects.all
+
+    context = {        
+        'TopMenus':TopMenu,
+        'SocialMedias':SocialMedia,
+        'SubTopMenus':SubTopMenu,
+        'Blogs':Blog,
+        'Footers':Footer,
+
+     }
+    return render(request,'accounts/blog.html',context)
+
+def product_details(request):
+    TopMenu = tblTopMenu.objects.all
+    SocialMedia = tblSocialMedia.objects.all 
+    SubTopMenu = tblSubTopMenu.objects.all
+    Footer = tblFooter.objects.all
+    Product = tblProducts.objects.all
+    context = {        
+        'TopMenus':TopMenu,
+        'SocialMedias':SocialMedia,
+        'SubTopMenus':SubTopMenu,
+        'Footers':Footer,
+        'Products':Product,
+     }
+    return render(request,'accounts/product-details.html',context)
+
+def CartPage(request):
+    TopMenu = tblTopMenu.objects.all
+    SocialMedia = tblSocialMedia.objects.all 
+    SubTopMenu = tblSubTopMenu.objects.all
+    Footer = tblFooter.objects.all
+
+    
+    context = {        
+        'TopMenus':TopMenu,
+        'SocialMedias':SocialMedia,
+        'SubTopMenus':SubTopMenu,
+        'Footers':Footer,
+
+     }
+    return render(request,'accounts/CartPage.html',context)
 
 #Checkout
 def checkout(request):
@@ -273,6 +305,25 @@ def checkout(request):
         'TopMenus':TopMenu,
         'SubTopMenus':SubTopMenu,
     })
+
+
+
+def cart(request):
+    TopMenu = tblTopMenu.objects.all
+    SocialMedia = tblSocialMedia.objects.all 
+    SubTopMenu = tblSubTopMenu.objects.all
+    Footer = tblFooter.objects.all
+
+    
+    context = {        
+        'TopMenus':TopMenu,
+        'SocialMedias':SocialMedia,
+        'SubTopMenus':SubTopMenu,
+        'Footers':Footer,
+
+     }
+    return render(request,'accounts/cart.html',context)
+
 
 def place_order(request):
     if request.method == 'POST':
@@ -346,9 +397,15 @@ def place_order(request):
 
     return redirect('checkout')
 
+def blog_details(reqest):
+     return render(reqest, "accounts/blog-details.html")
 
-def blog_details(request):
-     return render(request, "accounts/blog-details.html")
+def ViewValue(request):
+    UnitPrice = 1500
+    Quantity = 5
+    TotalPrice = UnitPrice * Quantity
+    context = {"TP": TotalPrice, "Product": "HiProduct"}
+    return render(request, "accounts/viewValue.html", context)
 
 
 def ListCategory(request):
@@ -357,4 +414,20 @@ def ListCategory(request):
         'categorys' :category,
     }
     return render(request, 'accounts/ListCategory.html', context)
+
+def shop(request):
+    TopMenu = tblTopMenu.objects.all
+    SubTopMenu = tblSubTopMenu.objects.all
+    
+    context = {        
+        'TopMenus':TopMenu,
+        'SubTopMenus':SubTopMenu,
+     }
+    return render(request,'accounts/shop.html',context)
+
+
+# def ViewBlog(request, pk):
+#     Blog = TblBlog.objects.get(BlogTypeID=pk)
+#     context = {'Blogs': Blog}
+#     return render(request, 'accounts/shop.html', context)
 

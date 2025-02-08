@@ -7,38 +7,14 @@
                     <div class="section_title">
                         <h2>new arrivals</h2>
                     </div>
-                    
-                    <div class="product_tab_btn d-flex">
-                        <ul class="nav" role="tablist">
-                            
-                            <li>
-                                <a class="active" data-toggle="tab" href="#all2" role="tab" aria-controls="all2"
-                                    aria-selected="true">
-                                    All
-                                </a>
-                            </li>
-                            {% for Categorie in Categories %}
-
-                            <li>
-                                <a data-toggle="tab" href="#" role="tab" aria-controls=""
-                                    aria-selected="false">
-                                    {{Categorie.categoryName}}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                        
-                    </div>
-                    
                 </div>
-
                 <div class="row shop_wrapper">
                     {% for Product in Products %}
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 ">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6 toggle-{{Categories.id}}" id="{{Product.id}}">
                         <div class="single_product">
                              <div class="product_thumb">
-                                <a href="#" >
+                                <a href="{% url 'product_details' %}" >
                                     <img class="primary_img" src="{% static Product.productImage %}" alt="consectetur">
                                 </a>
                                 <div class="product_action">
@@ -66,13 +42,13 @@
                                             <li><span>(5)</span></li>
                                     </ul>
                                 </div>
-                                <h4 class="product_name"><a href="{% url 'product_details' %}">{{Product.productName}}</a></h4>
+                                <h4 class="product_name"><a href="#">{{Product.productName}}</a></h4>
                                 <div class="price_box">
                                     <span class="current_price">${{Product.current_price}}</span>
                                     <span class="old_price">${{Product.old_price}}</span>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    <a class="btn btn-primary" href="{% url 'add_to_cart' Product.id %}" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
                                 </div>
                             </div>
                             <div class="product_list_content">
@@ -86,7 +62,7 @@
                                     <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Viva..</p>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a class="btn btn-primary" href="#" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
+                                    <a class="btn btn-primary" href="{% url 'cart' %}" data-tippy="Add To Cart"  data-tippy-inertia="true" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-placement="top">Add To Cart</a>
 
                                 </div>
                             </div>
@@ -146,7 +122,7 @@
                                                         <div class="modal_add_to_cart">
                                                             <form action="#">
                                                                 <input min="1" max="100" step="2" value="1" type="number">
-                                                                <button type="submit">add to cart</button>
+                                                                <button ><a href="{% url 'add_to_cart' Product.id %}">add to cart</a></button>
                                                             </form>
                                                         </div>
                                                     </div>
